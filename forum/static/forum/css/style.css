@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+div.__with-border{
+	border-radius: 10px;
+    background-color: #FFFFFF;
+	margin-bottom: 30px;
+}
+
+div.__header{
+	background-color: #3E1919;
+	color: #FFFFFF;
+}
+
+div.__footer{
+	background-color: #3E1919;
+	color: #FFFFFF;
+}
+
+
+div.__main_back{
+	padding: 30px;
+	background-color: #FFFFFF;
+	border-radius: 15px;
+	box-shadow: 0 0 10px;
+}
+
+div.__right-col{
+    box-shadow: 0 0 10px;
+    background-color: #FFFFFF;
+}
+
+.horizont-line{
+    margin: 4px 13px;
+    border-bottom: 2px solid #3E1919;
+}
+
+.__vertical-line{
+    margin: 10px 0px;
+    border-left: 2px solid #3E1919;
+}
+
+.__name-user{
+	text-align: center;
+	margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.__img-user{
+	width: 30px;
+	height: 30px;
+}
+
+.__img-user-big{
+    width: 110px;
+	height: 110px;
+}
+
+.__icon-like{
+	font-size: 15px;
+	text-align: center;
+}
+
+.__height_of_button{
+    height: 38px;
+}
+
+nav.__nav-top{
+    background-color: #3E1919;
+	color: #FFFFFF;
+	width: 100%;
+}
+
+a.navbar-brand{
+    margin-left: 100px;
+}
+
+nav > form > input{
+    margin-left: -300px;
+}
+
+.__btn{
+    background-color: #FFFFFF;
+    color: #210D0D;
+}
+
+.__btn-2{
+    background-color: #210D0D;
+    color: #FFFFFF;
+}
+
+span.navbar-text{
+    margin-right: 100px;
+}
+
+.__mrg-in-top{
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+p.__in-main{
+	font-size: 18px;
+}
+
+p.__in-single{
+	font-size: 20px;
+}
+
+.__body{
+    background-color: #FFFFFF;
+	font-family: "Open Sans";
+	color: #555;
+
+	-webkit-overflow-scrolling: touch;
+}
+
+.footer {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    border-top: 1px solid #afafaf;
+    background-color: #FFFFFF;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.footer__item {
+    color: #a9a9a9;
+    margin-right: 30px;
+}
+
+.__position-right{
+	text-align: right;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color: #333;
+}
+
+.__a{
+	outline: 0;
+	text-decoration: none;
+	color: #333;
+}
+
+.__a-brand{
+    outline: 0;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.__a-for-tag{
+	outline: 0;
+	text-decoration: none;
+	color: #008dde;
+}
+
+.__a:hover, .__a:focus, .__a-brand:hover, .__a-brand:focus{
+	color: #1974D2;
+	text-decoration: none;
+	outline: 0;
+}
+
+.__a-for-tag:hover, .__a-for-tag:focus{
+	color: #bababa;
+	text-decoration: none;
+	outline: 0;
+}

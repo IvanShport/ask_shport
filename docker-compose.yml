@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  djangoapp:
+    build: .
+    networks:
+      - nginx_network
+      - database_network
+    depends_on:
+      - database
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 8080:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - djangoapp
+    networks:
+      - nginx_network
+
+  database:  
+    build: postgres-docker2
+    container_name: database
+    env_file:
+      - config/db/database_env
+    networks:
+      - database_network
+
+networks:
+  nginx_network:
+    driver: bridge
+  database_network:
+    driver: bridge

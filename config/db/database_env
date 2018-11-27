@@ -1,0 +1,3 @@
+POSTGRES_USER=ask_user
+POSTGRES_PASSWORD=password
+POSTGRES_DB=database

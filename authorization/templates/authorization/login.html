@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	<h1 class = "text-left ml-3 font-weight-bold">Авторизация</h1>
+
+<div class = "my-4 col-md-8">
+	<form method = "post" action = "{% url 'authorization:login' %}">
+	{% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+            {{ field.as_widget }}
+            <div class="">
+                {{ field.errors }}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="form-check my-3 ml-3">
+      <label class="form-check-label"></label>
+      <input class="form-check-input" type="checkbox"> Запомнить меня
+    </div>
+		<input class = "btn __btn-2" type = "submit" value = "Войти"/>
+		<input type = "hidden" name = "next" value = "{{ next }}"/>
+    <a href = "{% url 'authorization:registration' %}">
+		  <button type="button" class = "btn __btn-2 ml-2">Регистрация</button>
+    </a>
+	</form>
+</div>
+	{% for err in form.non_field_errors %}
+		<div class="alert alert-danger"> {{ err }} </div>
+	{% endfor %}
+{% endblock %}

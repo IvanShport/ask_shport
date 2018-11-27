@@ -1,0 +1,100 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+
+{% if tag %}
+  <h1 ><strong> {{ title }}</strong> {{ tag }}</h1>
+{% else %}
+  <h1 class = "font-weight-bold"> {{ title }}</h1>
+{% endif %}
+
+<div class = "row my-4">
+
+
+<div class = "col-md-3 text-left">
+  <div class="nav-item dropdown">
+        <p class="nav-link dropdown-toggle my-2 font-weight-bold" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Сортировать
+        </p>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="?sort=date">по дате</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="?sort=views">по просмотрам</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="?sort=rating">по рейтингу</a>
+        </div>
+  </div>
+</div>
+
+{% include "base/paginator.html" %}
+
+{% for post in page %}
+<div class="col-12">
+  <div class = "card __with-border">
+    <div class = "row card-body">
+      <div class = "col-md-2">
+        <div class = "container">
+          {% if post.author.avatar %}
+            <img src="{{post.author.avatar.url}}"class = "img-thumbnail __img-user-big">
+          {% else %}
+            <img src="{% static 'forum/images/user.png' %}" class = "img-thumbnail __img-user-big">
+          {% endif %}
+        </div>
+        <div class = "container __name-user">
+          <div class = "row">
+            <h5 class = "card-title __name-user">{{post.author.user.first_name}} {{post.author.user.last_name}} </h5>
+          </div>
+        </div>
+      </div>
+      <div class = "col-md-10">
+        <div class = "container">
+          <a href = "{% url 'forum:single' post.id %}" class = "__a"><h3 class = "card-title"><strong>{{post.title}}</strong></h3></a>
+          <h6 class = "card-subtitle mb-2 text-muted">
+          <span class = "mr-3">Дата публикации: {{post.pub_date|date:'j E Y f'}}</span>
+          <i class="fa fa-comment-o" aria-hidden="true"></i>({{post.comment_set.all.count}})</h6>
+          <p class = "card-text __in-main">{{post.text|truncatewords:64|truncatechars:400}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class = "card-footer __footer">
+          <div class = "row">
+            <div class = "col-md-2">
+                <div class = "row">
+                  <div class = "col-md-6">
+                    <h5><span class="badge  __icon-like">
+                    {{post.get_likes|default:'0'}} <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i></span></h5>
+                  </div>
+                  <div class = "col-md-6">
+                    <h5><span class="badge  __icon-like">
+                    {{post.get_dislakes|default:'0'}} <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i></span></h5>
+                  </div>
+                </div>
+            </div>
+            <div class = "col-md-1">
+            </div>
+            <div class = "col-md-7">
+              <ul class = "list-inline my-1">
+                <li class="list-inline-item"><strong>Теги:</strong></li>
+                {% for tag in post.tags.all %}
+                  <li class="list-inline-item"><a class = "__a-for-tag" href = "{% url 'forum:tag' tag.id %}">{{tag}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class = "col-md-2 text-muted">
+                    <h5><span class="badge  __icon-like">
+                    {{post.views}} <i class="fa fa-eye fa-lg" aria-hidden="true"></i></span></h5>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% include "base/paginator.html" %}
+
+</div>
+{% endblock %}
